@@ -19,7 +19,7 @@
                 </div>
             </header>
             <section>
-
+                <ul id="list"></ul>
             </section>
             <footer>
                 <i id="addBtn" class="icon-plus-sign icon-3x"></i>
@@ -43,5 +43,15 @@
     {{each data as item}}
     <input type="radio" name="date" id="{{item.id}}" data-time="{{item.time}}" {{item.checked==true?'checked':''}}>
     <label for="{{item.id}}">{{item.name}}</label>
+    {{/each}}
+</script>
+
+<script type="text/html" id="listTemplate">
+    {{each arr as item}}
+        <li>
+            <span>{{item.content}}</span>
+            <input type="checkbox" id="{{item.id}}">
+            <label for="{{item.id}}"></label>
+        </li>
     {{/each}}
 </script>

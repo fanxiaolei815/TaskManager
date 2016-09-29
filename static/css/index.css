@@ -56,3 +56,25 @@ input{
 #commit{
     padding: 10px;
 }
+
+ul{
+    list-style: none;
+    padding:0;
+}
+ul li{
+    position: relative;
+    line-height: 60px;
+    border-bottom: 1px lightgray solid;
+}
+ul li input{
+    display: none;
+}
+ul li label{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height:30px;
+    background-image: url('../images/unselect.png');
+    background-size: 100% 100% ;
+}
