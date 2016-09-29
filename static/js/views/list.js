@@ -7,10 +7,16 @@ define([
 
         },
         initialize:function(){
+           //从服务端获取当前日期对应的数据展示
+           this.render()
+
+            //监听date的变化,重新渲染页面
+            this.listenTo(this.model,'changeDate',this.render)   
+        },
+        render:function(){
             // 声明变量赋值为this
             var self = this 
-           //从服务端获取当前日期对应的数据展示
-           this.model.fetch().done(function(){
+            this.model.fetch().done(function(){
             //    这里，this不是视图类对象
                console.log(self.model)
                 
