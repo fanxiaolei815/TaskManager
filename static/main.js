@@ -5,20 +5,22 @@ require.config({
         'template':'js/libs/template',
         'jquery-ui':'js/libs/jquery-ui/jquery-ui.min',
         'underscore':'js/libs/underscore',
-        'backbone':'js/libs/backbone'
+        'backbone':'js/libs/backbone',
+        'task':'js/models/task'
     },
     shim:{
         'backbone':['underscore','jquery'],
         'jquery-ui':['jquery']
     }
 })
-require(['jquery','js/views/header','js/views/footer'],function($,Header,Footer){
+require(['jquery','js/views/header','js/views/footer','js/collections/taskset'],function($,Header,Footer,Taskset){
     // 页面加载完成，风火轮消失，主界面展示出现
     $(function(){
         $('#loading').hide()
         $('main').fadeIn()
     })
 
+    var taskset = new Taskset()
     new Header()
-    new Footer()
+    new Footer({model:taskset})
 })

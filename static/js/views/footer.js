@@ -14,6 +14,8 @@ define([
         commit:function(){
             this.$('#addBtn').fadeIn()
             this.$('#editBox').hide()
+
+            //提交数据到服务端（model类的操作）
         }
     })
     
