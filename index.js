@@ -46,6 +46,19 @@ app.get('/task/:date',(req,res)=>{
     })
 })
 
+
+// 更新任务状态
+app.put('/task/:date/:id',(req,res)=>{
+    var id = req.params.id
+    Task.findByIdAndUpdate(id,{complete:req.body.complete}).exec(function(err){
+        if(err){
+            res.json({result:0})
+        }else{
+            res.json({result:1})
+        }
+    })
+})
+
 app.listen(3000,()=>{
     console.log('服务器监听3000端口')
 })
