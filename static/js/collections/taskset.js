@@ -9,6 +9,11 @@ define([
         // 日期不同，向服务端获取的数据也不同，设置一个随日期变化的url
         url:function(){
             return '/task/'+this.date
+        },
+
+        //parse方法 解析服务端发过来的数据
+        parse:function(data){
+            return data.tasks
         }
     })
 });
