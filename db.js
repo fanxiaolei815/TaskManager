@@ -2,6 +2,12 @@
 var mongoose = require('mongoose')
 // 连接数据库
 mongoose.connect('mongodb://localhost/h5-5')
+
+// 设置promise----
+// mongoose也支持promise，不过自带的promise已经被废弃，修改为全局的promise
+mongoose.Promise = global.Promise
+
+
 // 获取连接到的数据库对象
 var db = mongoose.connection
 // 监听事件
