@@ -20,6 +20,31 @@ app.post('/task/:date',(req,res)=>{
     })
 })
 
+// 获取日期对应的任务数据返回
+app.get('/task/:date',(req,res)=>{
+    // 从url中获取日期
+    var date = req.params.date
+    console.log(date)
+    // 根据time字段从数据库获取数据
+    Task.find({time:date}).exec(function(error,tasks){
+        console.log(tasks)
+        if(error){
+            res.json({result:0})
+        }else{
+            // 重新组织数据
+            tasks = tasks.map(function(item,index,array){
+                return {
+                    id:item._id,
+                    content:item.content,
+                    time:item.time
+                }
+            })
+            // 反馈数据到浏览器端
+            res.json({result:1,tasks:tasks})
+        }
+    })
+})
+
 app.listen(3000,()=>{
     console.log('服务器监听3000端口')
 })
