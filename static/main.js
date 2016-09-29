@@ -12,10 +12,12 @@ require.config({
         'jquery-ui':['jquery']
     }
 })
-require(['jquery'],function($){
+require(['jquery','js/views/header'],function($,Header){
     // 页面加载完成，风火轮消失，主界面展示出现
     $(function(){
         $('#loading').hide()
         $('main').fadeIn()
     })
+
+    new Header()
 })

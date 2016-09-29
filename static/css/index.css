@@ -23,4 +23,5 @@ main{
     border-radius: 10px;
     background-color: white;
     display: none;
+    padding: 10px;
 }
