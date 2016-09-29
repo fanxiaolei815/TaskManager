@@ -36,7 +36,8 @@ app.get('/task/:date',(req,res)=>{
                 return {
                     id:item._id,
                     content:item.content,
-                    time:item.time
+                    time:item.time,
+                    complete:item.complete
                 }
             })
             // 反馈数据到浏览器端

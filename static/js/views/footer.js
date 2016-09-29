@@ -27,7 +27,8 @@ define([
             // create方法的作用：根据传递的数据创建一个新的model对象，发送到服务端保存，同时添加到集合中
             this.model.create({
                 content:content,
-                time:this.model.date
+                time:this.model.date,
+                complete:false
             },{wait:true})
         }
     })

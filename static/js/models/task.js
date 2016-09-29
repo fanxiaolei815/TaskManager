@@ -5,7 +5,8 @@ define([
     return B.Model.extend({
         defaults:{
             time:0,
-            content:''
+            content:'',
+            complete:false
         }
     })
     
