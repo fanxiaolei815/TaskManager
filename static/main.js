@@ -3,7 +3,7 @@ require.config({
     paths:{
         'jquery':'js/libs/jquery',
         'template':'js/libs/template',
-        'jquery-ui':'js/libs/jquery-ui',
+        'jquery-ui':'js/libs/jquery-ui/jquery-ui.min',
         'underscore':'js/libs/underscore',
         'backbone':'js/libs/backbone'
     },

@@ -5,6 +5,7 @@
         <title>任务管理器</title>
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="js/libs/Font-Awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="js/libs/jquery-ui/jquery-ui.min.css">
     </head>
     <body>
         <i class="icon-spinner icon-spin icon-4x" id="loading"></i>
@@ -27,3 +28,16 @@
         <script src="js/libs/require.js" data-main="main"></script>
     </body>
 </html>
+
+
+<!--header中按钮组的模板
+    id：唯一标识符；
+    time:当前时间；
+    name:label上的文字
+-->
+<script type="text/html" id="dateTemplate">
+    {{each data as item}}
+    <input type="radio" name="date" id="{{item.id}}" data-time="{{item.time}}">
+    <label for="{{item.id}}">{{item.name}}</label>
+    {{/each}}
+</script>
