@@ -60,7 +60,7 @@ define([
                 return item.get('id') == id
             })
             // 更新任务状态
-            obj.set({'complete':isComplete})
+            obj.set({'complete':complete})
             //4、保存到服务器
             obj.save()
         }

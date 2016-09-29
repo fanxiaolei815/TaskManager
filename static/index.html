@@ -50,7 +50,7 @@
     {{each arr as item}}
         <li>
             <span>{{item.content}}</span>
-            <input type="checkbox" id="{{item.id}}">
+            <input type="checkbox" id="{{item.id}}" {{item.complete==true?'checked':''}}>
             <label for="{{item.id}}"></label>
         </li>
     {{/each}}
