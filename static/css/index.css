@@ -5,6 +5,8 @@
 html{
     height: 100%;
 }
+
+/*弹性布局实现上下左右居中*/
 body{
     height:100%;
     display: flex;

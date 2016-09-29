@@ -13,6 +13,7 @@ require.config({
     }
 })
 require(['jquery'],function($){
+    // 页面加载完成，风火轮消失，主界面展示出现
     $(function(){
         $('#loading').hide()
         $('main').fadeIn()
