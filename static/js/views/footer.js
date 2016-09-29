@@ -28,7 +28,7 @@ define([
             this.model.create({
                 content:content,
                 time:this.model.date
-            })
+            },{wait:true})
         }
     })
     

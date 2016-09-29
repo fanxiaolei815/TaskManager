@@ -11,9 +11,13 @@ define([
            this.render()
 
             //监听date的变化,重新渲染页面
-            this.listenTo(this.model,'changeDate',this.render)   
+            this.listenTo(this.model,'changeDate',this.render) 
+
+            //监听集合中加入任务的事件，重新渲染页面
+            this.listenTo(this.model,'add',this.render)
         },
         render:function(){
+            console.log('render')
             // 声明变量赋值为this
             var self = this 
             this.model.fetch().done(function(){
