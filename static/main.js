@@ -21,6 +21,7 @@ require(['jquery','js/views/header','js/views/footer','js/collections/taskset'],
     })
 
     var taskset = new Taskset()
-    new Header()
+    // 将header视图与集合关联；在header中修改的日期需要通过集合传递到footer中
+    new Header({model:taskset})
     new Footer({model:taskset})
 })

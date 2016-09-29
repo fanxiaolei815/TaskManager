@@ -57,6 +57,8 @@ define([
             // http://www.runoob.com/jqueryui/example-datepicker.html
             this.$('#radio #datepicker').datepicker()
 
+            // 3、设置 集合 日期
+            this.model.date = date.getFullYear()*10000 + (date.getMonth()+1)*100+date.getDate()
         },
         //星期转化
         getWeek:function(num){
@@ -82,6 +84,9 @@ define([
             // 刷新h1
             this.$('h1').text(date.getFullYear()+'年' + (date.getMonth()+1)+'月'
             +date.getDate()+'日' + '  ' + this.getWeek(date.getDay()))
+            
+            // 重设集合的日期
+           this.model.date = date.getFullYear()*10000 + (date.getMonth()+1)*100+date.getDate()
         }
     })
     
