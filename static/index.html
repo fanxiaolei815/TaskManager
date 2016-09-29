@@ -37,7 +37,7 @@
 -->
 <script type="text/html" id="dateTemplate">
     {{each data as item}}
-    <input type="radio" name="date" id="{{item.id}}" data-time="{{item.time}}">
+    <input type="radio" name="date" id="{{item.id}}" data-time="{{item.time}}" {{item.checked==true?'checked':''}}>
     <label for="{{item.id}}">{{item.name}}</label>
     {{/each}}
 </script>
