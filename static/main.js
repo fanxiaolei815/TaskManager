@@ -1,0 +1,20 @@
+// 模块化配置
+require.config({
+    paths:{
+        'jquery':'js/libs/jquery',
+        'template':'js/libs/template',
+        'jquery-ui':'js/libs/jquery-ui',
+        'underscore':'js/libs/underscore',
+        'backbone':'js/libs/backbone'
+    },
+    shim:{
+        'backbone':['underscore','jquery'],
+        'jquery-ui':['jquery']
+    }
+})
+require(['jquery'],function($){
+    $(function(){
+        $('#loading').hide()
+        $('main').fadeIn()
+    })
+})
