@@ -12,7 +12,7 @@ require.config({
         'jquery-ui':['jquery']
     }
 })
-require(['jquery','js/views/header'],function($,Header){
+require(['jquery','js/views/header','js/views/footer'],function($,Header,Footer){
     // 页面加载完成，风火轮消失，主界面展示出现
     $(function(){
         $('#loading').hide()
@@ -20,4 +20,5 @@ require(['jquery','js/views/header'],function($,Header){
     })
 
     new Header()
+    new Footer()
 })
