@@ -15,6 +15,14 @@ define([
 
             //监听集合中加入任务的事件，重新渲染页面
             this.listenTo(this.model,'add',this.render)
+
+             
+            //任务列表支持排序
+            // http://api.jqueryui.com/sortable/
+
+            // 排序，需要有一个原始顺序，向Task中添加sortIndex字段；每次添加新数据
+            // 补充sortIndex字段
+            
         },
         render:function(){
             console.log('render')
@@ -32,7 +40,8 @@ define([
                         id:item.get('id'),
                         content:item.get('content'),
                         time:item.get('time'),
-                        complete:item.get('complete')
+                        complete:item.get('complete'),
+                        sortIndex:item.get('sortIndex')
                     }
                 })
                 // 采用artTemplate将模板和数据结合

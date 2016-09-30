@@ -85,3 +85,12 @@ ul li input+label{
 ul li input:checked+label{
     background-image: url('../images/select.png');
 }
+
+#addBtn.icon-trash{
+    color:red;
+}
+
+#list .li-placeholder{
+    height: 60px;
+    background-color: yellow;
+}

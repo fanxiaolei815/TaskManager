@@ -6,8 +6,8 @@ define([
         defaults:{
             time:0,
             content:'',
-            complete:false
+            complete:false,
+            sortIndex:0
         }
     })
-    
 });

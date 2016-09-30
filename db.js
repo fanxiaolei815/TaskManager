@@ -22,7 +22,8 @@ db.on('error',()=>{
 var schema = mongoose.Schema({
     time:String,
     content:String,
-    complete:Boolean
+    complete:Boolean,
+    sortIndex:Number
 })
 
 // 创建文档类
