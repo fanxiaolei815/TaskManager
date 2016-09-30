@@ -51,7 +51,7 @@ app.get('/task/:date',(req,res)=>{
 // 更新任务状态
 app.put('/task/:date/:id',(req,res)=>{
     var id = req.params.id
-    Task.findByIdAndUpdate(id,{complete:req.body.complete}).exec()
+    Task.findByIdAndUpdate(id,{complete:req.body.complete,sortIndex:req.body.sortIndex}).exec()
     .then(function(){
          res.json({result:1})
     }).catch(function(err){
