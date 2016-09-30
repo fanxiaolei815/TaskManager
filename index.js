@@ -59,6 +59,17 @@ app.put('/task/:date/:id',(req,res)=>{
     })
 })
 
+//数据删除操作
+app.delete('/task/:date/:id',function(req,res){
+    Task.findByIdAndRemove(req.params.id,function(err){
+        if(err){
+            res.json({'message':'删除数据失败'})
+        }else{
+            res.json({'message':'删除数据成功'})
+        }
+    })
+})
+
 app.listen(3000,()=>{
     console.log('服务器监听3000端口')
 })
