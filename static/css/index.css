@@ -65,6 +65,7 @@ ul li{
     position: relative;
     line-height: 60px;
     border-bottom: 1px lightgray solid;
+    background-color: white;
 }
 ul li input{
     display: none;
