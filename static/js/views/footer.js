@@ -51,7 +51,28 @@ define([
                 complete:false,
                 sortIndex:index
             },{wait:true})
+        },
+        initialize:function(){
+
+            // 让footer支持排序
+            $('footer').sortable({
+                // receice:接收；与他关联的可排序标签中某一项落到这个footer范围内
+                // 会触发的事件
+                receive:function(ev,ui){
+                    console.log('有一个li落到footer里面了')
+                    //找对应的数据删除
+                    var id = ui.item.find('input').attr('id')
+                    var m =  this.model.find(function(obj){
+                        return obj.get('id') == id
+                    })
+                    // 删除模型对象
+                    m.destroy()
+                    // 删除落下来的标签
+                    ui.item.remove()
+                }.bind(this)
+            })
         }
+
     })
     
 });
