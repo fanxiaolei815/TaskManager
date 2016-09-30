@@ -26,7 +26,7 @@ app.get('/task/:date',(req,res)=>{
     var date = req.params.date
     console.log(date)
     // 根据time字段从数据库获取数据
-    Task.find({time:date}).exec(function(error,tasks){
+    Task.find({time:date}).sort({sortIndex:1}).exec(function(error,tasks){
         console.log(tasks)
         if(error){
             res.json({result:0})
