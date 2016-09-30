@@ -22,7 +22,103 @@ define([
 
             // 排序，需要有一个原始顺序，向Task中添加sortIndex字段；每次添加新数据
             // 补充sortIndex字段
-            
+
+            // 采用jquery-ui支持排序
+
+             $('#list').sortable({
+            //    占位符：占位符标签设置的class属性
+               placeholder:'li-placeholder',
+            //    ev：事件对象
+            // ui:对象，包含被排序元素的各种信息
+               start:function(ev,ui){
+                   console.log('开始排序')
+                   $('#addBtn').removeClass().addClass('icon-trash icon-3x')
+               },
+               stop:function(ev,ui){
+                   console.log('结束排序')
+                   $('#addBtn').removeClass().addClass('icon-plus-sign icon-3x')
+               },
+               update:function(ev,ui){
+                   console.log('更新位置了')
+                   //找到对应的数据，修改sortIndex
+                   console.log(ev)
+                   console.log(ui)
+                   console.log(ui.item[0])
+                   //ui.item代表的是当前被拖拽的标签jquery对象
+                   // find(selector):查找元素
+                    //   id对应了数据model的id
+                  var id =  ui.item.find('input').attr('id')
+                  console.log(id) 
+                  //获取对应的数据
+                  var m = this.model.find(function(obj){
+                      return obj.get('id') == id
+                  })
+                  console.log(m)
+                  //修改m的sortIndex
+                  //如果li被移动到最上方，值就是原来最上方的li对应的sortIndex-1
+                  // 如果li被移动到最下方，值就是原来最下方的li对应的sortIndex+1
+                 // 如果li被移动到中间，值就是 上、下的li对应的sortIndex相加除以2
+                var index = 0 
+                if(ui.item[0] == $('#list li').first()[0]){
+                    console.log('li被移动到最上方了')
+                    console.log(ui.item.next())
+                    // 找到下一个任务的id
+                    var nextId = ui.item.next().find('input').attr('id')
+                    // 找到下一个任务
+                    var nextM = this.model.find(function(obj){
+                        return obj.get('id') == nextId
+                    })
+                    // 下一个任务的序号减1
+                    // 需要给任务添加sortIndex字段，添加数据的时候，计算sortIndex
+                    index = nextM.get('sortIndex')-1
+
+                }else if(ui.item[0] == $('#list li').last()[0]){
+                    console.log('li被移动到最下方了')
+                     console.log(ui.item.prev())
+                    //  找到上一个任务的id
+                    var prevId = ui.item.prev().find('input').attr('id')
+                    // 找到上一个任务
+                    var prevM = this.model.find(function(obj){
+                        return obj.get('id') == prevId
+                    })
+                    // 上一个任务的序号+1
+                    index = prevM.get('sortIndex')+1
+
+                }else{
+
+                    // 判断li是否已经不在ul内，如果是，则返回
+                    if(ui.item.parent()[0] != $('#list')[0]){
+                        return 
+                    }
+                    console.log('li 被移动到中间了')
+                    console.log(ui.item.prev())
+                    console.log(ui.item.next())
+                    // 找到上一个任务
+                    var nextId = ui.item.next().find('input').attr('id')
+                    var nextM = this.model.find(function(obj){
+                        return obj.get('id') == nextId
+                    })
+                    //找到下一个任务
+                    var prevId = ui.item.prev().find('input').attr('id')
+                    var prevM = this.model.find(function(obj){
+                        return obj.get('id') == prevId
+                    })
+                    // 计算序号
+                    index = (prevM.get('sortIndex') + nextM.get('sortIndex'))/2
+                }
+                //修改sortIndex
+                m.set({sortIndex:index})
+                console.log(index)
+                //保存 
+                m.save()
+
+               }.bind(this),
+                // 关联一个外部的元素
+                // 'footer':是关联元素的选择器
+                // 外部元素也要sortable
+                connectWith:'footer'
+           })
+
         },
         render:function(){
             console.log('render')
