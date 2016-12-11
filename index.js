@@ -31,7 +31,7 @@ app.get('/task/:date',(req,res)=>{
         if(error){
             res.json({result:0})
         }else{
-            // 重新组织数据
+            // 重新组织数据　实验一下
             tasks = tasks.map(function(item,index,array){
                 return {
                     id:item._id,
